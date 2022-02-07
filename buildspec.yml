@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  post_build:
+    commands:
+      - echo Build completed successfully
+  build:
+    commands:
+      - echo
+      - mvn clean package
+artifacts:
+  files:
+    - target/order-service.jar
+  discard-paths: yes
