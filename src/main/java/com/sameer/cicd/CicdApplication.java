@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 @RestController
@@ -18,7 +20,8 @@ public class CicdApplication {
 
     @GetMapping
     public List<Order> fetchOrder() {
-        return orderDao.orderList();
+        System.out.println("hi");
+        return orderDao.orderList().stream().sorted(Comparator.comparing(Order::getPrice)).collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
